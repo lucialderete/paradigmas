@@ -1,0 +1,15 @@
+talento(juan, cantar).
+talento(pedro, cantar).
+talento(maria, cantar).
+talento(juan, pintar).
+talento(patricia, pintar).
+talento(lucas, bailar).
+talento(pedro, escribir).
+talento(luisa, escribir).
+talento(ana, escribir).
+
+talentoso(X) :- talento(X, T1), talento(X, T2), T1\=T2.
+
+semejantes(X, Y) :- talento(X, T), talento(Y, T), X\=Y.
+
+unTalento(X) :- talento(X, T1), \+ (talento(X, T2), T1\=T2).

@@ -1,0 +1,60 @@
+% ---1a---
+progenitor(ahadi, mufasa).
+progenitor(uru, mufasa).
+progenitor(ahadi, scar).
+progenitor(uru, scar).
+
+progenitor(scar, kovu).
+progenitor(zira, kovu).
+progenitor(scar, nuka).
+progenitor(zira, nuka).
+progenitor(scar, vitani).
+progenitor(zira, vitani).
+
+progenitor(sarabi, simba).
+progenitor(mufasa, simba).
+
+progenitor(simba, kiara).
+progenitor(nala, kiara).
+progenitor(simba, kopa).
+progenitor(nala, kopa).
+
+
+
+%---1d ---
+femenino(uru).
+femenino(sarabi).
+femenino(zira).
+femenino(kiara).
+femenino(vitani).
+
+masculino(ahadi).
+masculino(mufasa).
+masculino(scar).
+masculino(simba).
+masculino(kopa).
+masculino(kovu).
+masculino(nuka).
+
+%---1e---
+madreDe(Y, X) :- progenitor(Y, X), femenino(Y).
+
+hjoDe(Y, X) :- progenitor(X, yY), masculino(Y).
+hijaDe(Y, X) :- progenitor(X, Y), femenino(Y).
+
+abueloDe(Y,X) :- progenitor(Y, Z), progenitor(Z, X), masculino(Y).
+abuelaDe(Y, X) :- progenitor(Y, Z), progenitor(Z, X), femenino(Y).
+
+hermanoDe(Y, X) :- progenitor(Z, X), progenitor(Z, Y), X\=Y.
+
+primoDe(Y, X) :- progenitor(Z, X), progenitor(W, Y), hermanoDe(Z, W), masculino(Y).
+primaDe(Y, X) :- progenitor(Z, X), progenitor(W, Y), hermanoDe(Z, W), femenino(Y).
+
+tioDe(Y, X) :- progenitor(Z, X), hermanoDe(Y, Z), masculino(Y).
+tiaDe(Y, X) :- progenitor(Z, X), hermanoDe(Y, Z), femenino(Y).
+
+%---1f---
+bisabueloDe(Y, X) :- progenitor(Y, Z), progenitor(Z, W), progenitor(W, X), masculino(Y).
+bisabuelaDe(Y, X) :- progenitor(Y, Z), progenitor(Z, W), progenitor(W, X), femenino(Y).
+
+

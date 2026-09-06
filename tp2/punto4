@@ -1,0 +1,96 @@
+cantidadDigitos(N, 1):- N < 10.
+
+cantidadDigitos(N, Cant):-
+    N >= 10,
+    Resto is N // 10,
+    cantidadDigitos(Resto, CantResto),
+    Cant is CantResto + 1.
+
+productoDigitos(N, N):-
+    N < 10.
+
+productoDigitos(N, Producto):-
+    N >= 10,
+    Digito is N mod 10,
+    Resto is N // 10,
+    productoDigitos(Resto, PorductoResto),
+    Producto is Digito * PorductoResto.
+
+tieneCero(N) :-
+    N mod 10 =:= 0.
+
+tieneCero(N) :-
+    N mod 10 =\= 0,
+    Resto is N // 10,
+    Resto > 0,
+    tieneCero(Resto).
+
+menorDigito(N, N) :-
+    N < 10.
+
+menorDigito(N, Menor) :-
+    N >= 10,
+    Digito is N mod 10,
+    Resto is N // 10,
+    menorDigito(Resto, MenorResto),
+    Menor is min(Digito, MenorResto).
+
+primeros(0, []).
+
+primeros(N, Lista) :-
+    N > 0,
+    N1 is N - 1,
+    primeros(N1, ListaResto),
+    append(ListaResto, [N], Lista).
+
+
+% b) i. Cantidad de elementos
+
+cantidad([], 0).
+
+cantidad([_|Resto], Cant) :-
+    cantidad(Resto, CantResto),
+    Cant is CantResto + 1.
+
+
+% b) ii. Suma de los elementos
+
+suma([], 0).
+
+suma([Primero|Resto], Suma) :-
+    suma(Resto, SumaResto),
+    Suma is Primero + SumaResto.
+
+
+% b) iii. Eliminar todas las ocurrencias
+
+eliminar(_, [], []).
+
+eliminar(X, [X|Resto], Resultado) :-
+    eliminar(X, Resto, Resultado).
+
+eliminar(X, [Primero|Resto], [Primero|Resultado]) :-
+    X \= Primero,
+    eliminar(X, Resto, Resultado).
+
+
+% b) iv. Obtener elementos mayores que un valor
+
+mayoresQue(_, [], []).
+
+mayoresQue(Valor, [Primero|Resto], [Primero|Resultado]) :-
+    Primero > Valor,
+    mayoresQue(Valor, Resto, Resultado).
+
+mayoresQue(Valor, [Primero|Resto], Resultado) :-
+    Primero =< Valor,
+    mayoresQue(Valor, Resto, Resultado).
+
+
+% b) v. Invertir la lista
+
+invertir([], []).
+
+invertir([Primero|Resto], Invertida) :-
+    invertir(Resto, InvertidaResto),
+    append(InvertidaResto, [Primero], Invertida).

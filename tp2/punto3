@@ -1,0 +1,98 @@
+% Base de Conocimiento ALMACEN DON MANOLO
+
+producto(lacteo, leche).
+producto(lacteo, manteca).
+producto(lacteo, crema).
+producto(lacteo, yogurt).
+producto(fiambre, queso).
+producto(fiambre, jamonCrudo).
+producto(fiambre, jamonCocido).
+producto(fiambre, salame).
+producto(panaderia, pan).
+producto(panaderia, factura).
+producto(panaderia, tortilla).
+producto(panaderia, galleta).
+producto(bebida, agua).
+producto(bebida, gaseosa).
+producto(bebida, jugo).
+producto(bebida, soda).
+producto(golosina, chocolate).
+producto(golosina, caramelo).
+producto(golosina, mantecol).
+producto(golosina, bombones).
+producto(golosina, nugaton).
+
+precio(leche, 77).
+precio(manteca, 62).
+precio(crema, 95).
+precio(yogurt, 53).
+precio(queso, 80).
+precio(jamonCrudo, 170).
+precio(jamonCocido, 100).
+precio(salame, 85).
+precio(pan, 80).
+precio(factura, 20).
+precio(tortilla, 10).
+precio(galleta, 75).
+precio(agua, 86).
+precio(gaseosa, 130).
+precio(jugo, 98).
+precio(soda, 100).
+precio(chocolate, 116).
+precio(caramelo, 35).
+precio(mantecol, 87).
+precio(bombones, 140).
+precio(nugaton, 51).
+
+
+mostrarBebidas(Min, Max, Producto) :- 
+    producto(bebida, Producto), 
+    precio(Producto, Precio), 
+    Precio >= Min, 
+    Precio =< Max.
+
+total([], 0).
+
+total([Producto|Lista], Total):-
+    precio(Producto, Precio),
+    total(Lista, TotalLista),
+    Total is Precio +TotalLista.
+
+
+% si es una lista vacia queda vacia
+eliminarGolosina([], []).
+
+%si el primer elemento es una golosina no la agrego
+eliminarGolosina([Producto|Lista], Resultado):-
+    producto(golosina, Producto), 
+    eliminarGolosina(Lista, Resultado).
+
+
+%si es golosina los agrega de nuevo a la lista
+eliminarGolosina([Producto|Lista], [Producto|Resultado]):-
+    \+ producto(golosina, Producto),
+    eliminarGolosina(Lista, Resultado).
+
+producto(Categoria, Producto).
+precio(Producto, Precio).
+
+promocion(Producto1, Producto2, Total):-
+    producto(Categoria1, Producto1),
+    producto(Categoria2, Producto2),
+    precio(Producto1, Precio1),
+    precio(Producto2, Precio2),
+
+    Producto1 \= Producto2,
+    Promedio is (Producto1 + Producto2)/2,
+    Promedio < 200,
+    descuento(Precio1, Precio2, Monto).
+
+descuento(Precio1, Precio2, Monto):-
+    Precio1 =< Precio2,
+    Monto is Precio1 * 0.30 + Precio2.
+
+descuento(Precio1, Precio2, Monto):-
+    Precio2 =< Precio1,
+    Monto is Precio2 * 0.30 + Precio1.
+
+
