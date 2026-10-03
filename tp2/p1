@@ -1,0 +1,35 @@
+%posible ejercicios de parcial loko si no me toman algo parecido a esto me pego un escopeta pipipi zo
+
+%calcular el maximo elemento de una lista
+maximo([X], X). %caso base, la lista tiene 1 solo elemento
+
+maximo([Primero|Resto], M):- %caso donde la cabeza de la lista es mayor
+    maximo(Resto, Max),
+    Primero >= Max,
+    M is Primero.
+
+maximo ([Primero|Resto], M):-
+    maximo(Resto, Max),
+    Primero<Max,
+    M is Max.
+
+
+%sumar elementos pares de una lista
+%para impares es la misma logica
+sumarPares([], 0). %caso base donde la lista esta vacia
+
+sumarPares([Primero|Resto], S):- %caso donde la cabeza de la lista es par
+    Primero mod 2 =:= 0,
+    sumarPares(Resto, Suma),
+    S is Primero + Suma.
+
+sumarPares([Primero|Resto], S):- %caso donde la cabeza de la lista es impar
+    Primero mod 2 =\=0,
+    sumarPares(Resto, S).
+
+
+%contar elementos de una lista
+contar([], 0).
+contar([Primero|Resto], C):-
+    contar(Resto, Suma),
+    C is Suma + 1.

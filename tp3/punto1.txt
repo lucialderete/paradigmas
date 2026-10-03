@@ -1,0 +1,3 @@
+la funcion misterio 1 devuelve la potencia de un numero ingresadp
+
+la funcion misterio 2 retorna la suma de los digitos de un numero
