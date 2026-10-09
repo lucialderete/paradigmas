@@ -33,3 +33,15 @@ contar([], 0).
 contar([Primero|Resto], C):-
     contar(Resto, Suma),
     C is Suma + 1.
+
+%cantidad de elementos pares de una lista
+pares([], 0). %caso base, la lista esta vacia
+
+pares([Primero|Resto], C):- %cuando el primero es par
+    Primero mod 2 =:= 0,
+    pares(Resto, Sumar),
+    C is Sumar + 1.
+
+pares([Primero|Resto], C):-
+    Primero =\= 0,
+    pares(Resto, C).
