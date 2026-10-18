@@ -4,36 +4,27 @@
 using namespace std;
 
 int main() {
-    cout << "=== PROBANDO CONSTRUCTOR POR DEFECTO ===" << endl;
+    cout<<"---cosntructor por defecto---"<<endl;
     Evento eDefecto;
     eDefecto.listarInformacion();
 
-    cout << "\n=== PROBANDO CONSTRUCTOR CON PARAMETROS ===" << endl;
-    Evento e1("Congreso de Informatica", "Lucia Alderete", true, 50000.0, 'N');
-    Evento e2("Cumbre de IA", "Carlos Perez", true, 80000.0, 'I');
-    Evento e3("Taller de Robótica", "Ana Gomez", false, 30000.0, 'N');
+    cout<<"---constructor con parametros---"<<endl;
 
-    e1.listarInformacion();
-    e2.listarInformacion();
-    e3.listarInformacion();
+    Evento evento1("congreso informatica", "lu alderete", true, 500000.0, 'N');
+    
+    Evento evento2("charla de IA", "carlos perez", false, 10000.0, 'I');
 
-    cout << "\n=== PROBANDO METODO MODIFICADOR setResponsable ===" << endl;
-    e1.setResponsable("Mariana Juarez");
-    cout << "Nuevo responsable asignado a Evento 1:" << endl;
-    e1.listarInformacion();
+    Evento evento3("taller de robotica", "ana gomez", false, 30000.0, 'N');
 
-    cout << "\n=== PROBANDO CONSTRUCTOR COPIA ===" << endl;
-    Evento eCopia(e2);
-    cout << "Copia creada a partir del Evento 2:" << endl;
-    eCopia.listarInformacion();
+    evento1.listarInformacion();
+    evento2.listarInformacion();
+    evento3.listarInformacion();
 
-    cout << "\nValor actual del autonumerico de la clase: " << Evento::getAutonumerico() << endl;
+    cout<<"cambio de responsable de EVENTO 1"<<endl;
+    evento1.setResponsable("mariana juarez");
+    cout<<"nuevo responsable del evento 1: "<<endl;
+    evento1.listarInformacion();
 
-    cout << "\n=== PROBANDO OBJETO DINAMICO CON NEW Y DELETE ===" << endl;
-    Evento *ptrEvento = new Evento("Hackathon 2026", "Sofia Ortiz", true, 45000.0, 'N');
-    ptrEvento->listarInformacion();
-    delete ptrEvento; // Invoca el destructor explícitamente en el heap
-
-    cout << "\n=== FINALIZANDO PROGRAMA (Invocacion automatica de destructores en Stack) ===" << endl;
-    return 0;
+    cout<<"crear copia del EVENTO 2"<<endl;
+    
 }
