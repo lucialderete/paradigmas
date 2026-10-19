@@ -52,3 +52,10 @@ quitarNPM [] n = []
 quitarNPM (x:xs) n
     | n <= 0 = x:xs
     | otherwise = quitarNPM xs (n-1)
+
+multiplos :: Int -> [Int] 
+multiplos n = [n | n <- [1..n], n `mod` 3 == 0]
+
+
+palabrasLargas :: [String] -> [String]
+palabrasLargas xs = [palabra | palabra <- xs, length palabra > 4]
