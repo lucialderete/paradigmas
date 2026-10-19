@@ -47,7 +47,7 @@ int main() {
 
     Coleccion H = F;
     if (F == H) {
-        cout << "\nF y H son iguales (correcto por constructor de copia)." << endl;
+        cout << "F y H son iguales (correcto por constructor de copia)." << endl;
     }
 
     if (F == G) {
