@@ -158,3 +158,5 @@ eliminarConsecutivos([H, H|Resto], ListaFinal):- %inicio de la lista es igual al
 eliminarConsecutivos([X, Y|Resto], [X|ListaFinal]):-%inicio de la lista es distinto al q le sigue
     X \= Y,
     eliminarConsecutivos([Y|Resto], ListaFinal).
+
+
