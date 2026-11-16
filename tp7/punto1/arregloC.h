@@ -12,10 +12,10 @@ class Arreglo{
 public:
     // constructor por defecto
     Arreglo();
-	unsigned int cantidad();
+	unsigned int cantidad() const;
 	void agregar(Producto *producto);
-	Producto* elemento(unsigned int pos);
-	bool estaVacio();
-	void escribir();
+	Producto* elemento(unsigned int pos) const;
+	bool estaVacio() const;
+	void escribir() const;
 	virtual ~Arreglo();
 };

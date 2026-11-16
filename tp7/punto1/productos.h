@@ -9,8 +9,14 @@ class Producto{
     double precio;
     static const float incremento = 0.10;
 public:
+// constructor por defecto
     Producto();
-    Producto(string descripcion, double precio);
+    // constructor por parametros
+    Producto(int codigo, string descripcion, double precio);
+    // constructor copia
+    Producto(const Producto &otroP);
+    // destructor
+    ~Producto();
     void listarInformacion();
     double calcularPrecioDeVenta();
-}
+};
