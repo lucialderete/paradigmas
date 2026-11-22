@@ -17,10 +17,15 @@
 
 class Aerolinea {
 	string nombre;
+	vector <Vuelo*> vuelos;
 
 public:
 	Aerolinea(string);
-	void crearVuelo(/* . . . */);
+	// vuelo nacional
+	Vuelo *crearVuelo(int codigo, Fecha fecha, double montoPasaje);
+	// vuelo internacional
+	Vuelo *crearVuelo(int codigo, Fecha fecha, double montoPasaje, string codAutorizacion);
+
 	void escribirResumen();
 	virtual ~Aerolinea();
 };

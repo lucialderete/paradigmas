@@ -17,19 +17,44 @@
 // --------------------------------------------------------------------------
 
 class Vuelo {
+protected:
 	int codigo;
 	Fecha fecha;
 	double montoPasaje;
+	vector <Cliente*> pasajeros;
 
-protected:
-	double calcularImpuestos();
-	double calcularMontoPasajes();
+	virtual double calcularImpuestos() const=0;
+	double calcularMontoPasajes() const;
+	
 
 public:
-	Vuelo(int, Fecha, double);
-	int getCodigo();
-	double calcularMontoNeto();
-	virtual ~Vuelo();
+	Vuelo(int codigo, Fecha fecha, double montoPasaje);
+	virtual ~Vuelo(){};
+
+	void agregarPasajero(Cliente *p);
+	int getCodigo() const;
+	double calcularMontoNeto() const;
+	
+};
+
+class Internacional : public Vuelo{
+	private:
+		string codAutorizacion;
+	protected:
+		double calcularImpuestos() const;
+	public:
+		Internacional(int codigo, Fecha fecha, double montoPasaje, string codAutorizacion);
+		static const double IMPUESTO_PAIS;
+		
+};
+
+class Nacional : public Vuelo{
+	protected: 
+		double calcularImpuestos() const;
+	public:
+		Nacional(int codigo, Fecha fecha, double montoPasaje);
+		static const double TARIFA_CABOTAJE;
+
 };
 
 #endif /* VUELO_H_ */

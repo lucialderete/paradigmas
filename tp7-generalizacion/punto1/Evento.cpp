@@ -52,7 +52,7 @@ string Evento::escribirInfoContacto(){
 }
 
 bool Evento::estaDisponible(){
-    return ((disponible.getAnio()>=2027) || (disponible.getAnio==2026 && disponible.getMes()>=11))
+    return ((disponible.getAnio()>=2027) || (disponible.getAnio()==2026 && disponible.getMes()>=11));
 }
 
 
